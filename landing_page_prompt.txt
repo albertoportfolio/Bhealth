@@ -1,0 +1,71 @@
+PROMPT PARA GENERAR UNA LANDING PAGE — "HBaby" (Baby Tracker)
+=============================================================
+
+Quiero que crees una landing page moderna, responsive y de una sola página para promocionar una app móvil llamada "HBaby", un baby tracker para madres y padres primerizos. Genera el proyecto completo con React + TypeScript + Vite, animaciones con Framer Motion y CSS convencional (archivos .css normales, sin Tailwind ni CSS-in-JS), listo para ejecutar con `npm install && npm run dev`.
+
+----------------------------------------------------------------
+1. SOBRE EL PRODUCTO
+----------------------------------------------------------------
+HBaby es una app móvil para seguir el día a día y el crecimiento de un bebé:
+
+- Registro de tomas de alimentación: pecho izquierdo/derecho (con duración en minutos) y biberón de fórmula o leche materna (con cantidad en ml).
+- Registro de sueño: sesiones con hora de inicio y fin, y modo "sueño en curso" con un banner en vivo y botón "Detener" para cronometrar siestas en tiempo real.
+- Seguimiento de peso: historial de mediciones con la diferencia respecto a la anterior (+/− gramos), para visualizar el crecimiento.
+- Soporte multi-bebé: se pueden registrar varios bebés y cambiar entre ellos fácilmente.
+- Resumen diario en la pantalla de inicio: tomas de hoy, sueño acumulado, último peso y acciones rápidas.
+- 100% privada y offline: todos los datos se guardan en local en el móvil (SQLite). Sin cuentas, sin servidores, sin anuncios, sin rastreo.
+- Multi-idioma: español e inglés.
+- Personalizable: 4 temas de color (rosa, azul, verde y oscuro).
+
+Propuesta de valor principal: "Todo el día a día de tu bebé, en tu bolsillo y solo en tu móvil." Los pilares del mensaje son: simplicidad, privacidad total (datos solo en el dispositivo) y diseño cálido.
+
+----------------------------------------------------------------
+2. IDENTIDAD VISUAL (debe coincidir con la app)
+----------------------------------------------------------------
+- Color protagonista: ROSA PALO. Toda la landing gira en torno a esta tonalidad suave y elegante; los demás colores son acentos puntuales.
+- Tipografía: Poppins (Google Fonts). Titulares en weight 600–700, cuerpo en 400.
+- Paleta (definirla como variables CSS en :root):
+  - --pink (rosa palo principal): #FF8FAB
+  - --pink-soft (fondos): #FFF5F7
+  - --pink-light (hovers, tintes): #FFD6E0
+  - --blue (acento secundario): #89CFF0
+  - --green (acento terciario): #A8E6CF
+  - --sleep (acento sueño, morado/azulado): #7C83FD
+  - --surface (tarjetas): #FFFFFF
+  - --text: #3D3D3D; --text-subtle: #9E9E9E
+- Estilo: suave y redondeado — tarjetas con border-radius grande (16–20 px), sombras muy sutiles rosadas, botones tipo píldora (radius ~14 px) con fondo rosa palo y texto blanco, mucho aire/espaciado. Degradados muy suaves rosa palo → blanco en fondos de sección.
+- Tono de comunicación: cercano, cálido y tranquilizador, dirigido a madres y padres recientes que duermen poco. Evitar tecnicismos.
+- Iconografía: iconos de línea suaves o emojis sutiles relacionados con bebés (biberón, luna, báscula, corazón).
+
+----------------------------------------------------------------
+3. ESTRUCTURA DE LA LANDING (componentes React, en este orden)
+----------------------------------------------------------------
+1. <Header/> fijo: logo "HBaby" a la izquierda, enlaces ancla (Funciones, Privacidad, Capturas, FAQ) y un botón CTA "Descargar". Fondo semitransparente con blur al hacer scroll.
+2. <Hero/>: titular potente (ej.: "El diario de tu bebé, simple y privado"), subtítulo de una línea, dos CTAs (badges de Google Play y App Store como placeholders) y un mockup de teléfono mostrando la app (mockup hecho con CSS usando la paleta rosa palo). Animación de entrada con Framer Motion (fade + slide up escalonado).
+3. <Features/>: rejilla de 4–6 tarjetas — Alimentación, Sueño en tiempo real, Peso y crecimiento, Varios bebés, Resumen diario, Temas de color. Cada tarjeta con icono, título y 1–2 frases. Aparición en cascada (stagger) al entrar en viewport con whileInView.
+4. <Privacy/> sección destacada (diferenciador clave): fondo rosa palo más intenso o degradado, mensaje tipo "Tus datos nunca salen de tu móvil. Sin cuentas, sin nube, sin anuncios." con 3 bullets (offline, sin registro, sin rastreadores).
+5. <Screenshots/>: fila de 3 mockups de teléfono (placeholders CSS) con pie de foto: "Registra una toma en 2 toques", "Cronometra el sueño en vivo", "Mira cómo crece". Sutil efecto parallax o hover con Framer Motion.
+6. <Testimonials/>: 3 tarjetas con citas ficticias de padres/madres (nombre + situación, ej. "Laura, mamá de Vega, 4 meses").
+7. <FAQ/>: acordeón con 4–5 preguntas (¿Es gratis?, ¿Necesito cuenta?, ¿Dónde se guardan mis datos?, ¿Funciona sin internet?, ¿Puedo registrar gemelos?). Animar apertura/cierre con AnimatePresence y height auto.
+8. <FinalCta/>: banda a todo el ancho con degradado rosa palo, titular de cierre y los badges de descarga.
+9. <Footer/>: logo, enlaces legales placeholder (Privacidad, Términos), contacto, y nota "Hecho con ❤ para padres y madres".
+
+----------------------------------------------------------------
+4. REQUISITOS TÉCNICOS
+----------------------------------------------------------------
+- Stack obligatorio: React 18+, TypeScript estricto, Vite, Framer Motion. Estilos en CSS convencional: un CSS global con las variables de la paleta (p. ej. src/styles/global.css) y un .css por componente; sin Tailwind, sin styled-components, sin CSS Modules salvo preferencia.
+- Estructura sugerida: src/components/<Componente>/<Componente>.tsx + <Componente>.css, src/data/content.ts con todos los textos tipados (interfaz por sección) para poder traducir a inglés fácilmente.
+- Totalmente responsive: mobile-first, con breakpoints para tablet (≥768 px) y escritorio (≥1100 px). El hero debe verse bien en un móvil de 375 px.
+- Animaciones con Framer Motion: entradas con whileInView + viewport={{ once: true }}, stagger en rejillas, micro-interacciones whileHover/whileTap en botones y tarjetas. Sutiles y elegantes, nada agresivo; respetar prefers-reduced-motion.
+- Accesibilidad: contraste suficiente sobre los tonos rosa palo (texto #3D3D3D), atributos alt, navegación por teclado en el acordeón del FAQ (button + aria-expanded), HTML semántico (header, main, section, footer).
+- Detalles de interacción: scroll suave a las anclas, header con blur al hacer scroll, hover suave en tarjetas y botones.
+- Rendimiento: cargar Poppins desde Google Fonts con preconnect, imágenes como placeholders SVG/CSS (sin assets pesados), sin más dependencias que react, react-dom y framer-motion.
+- SEO básico: title, meta description, Open Graph tags y favicon placeholder en index.html.
+
+----------------------------------------------------------------
+5. ENTREGABLES
+----------------------------------------------------------------
+- Proyecto Vite completo y funcional: package.json, tsconfig, index.html, src/ con todos los componentes y estilos.
+- Todos los textos finales redactados en español, listos para publicar (no lorem ipsum), centralizados en src/data/content.ts.
+- Comentarios mínimos en el código indicando dónde sustituir los placeholders (badges de las stores, capturas reales, enlaces legales).
+- Debe compilar sin errores con `pnpm build` y ejecutarse con `pnpm dev`.

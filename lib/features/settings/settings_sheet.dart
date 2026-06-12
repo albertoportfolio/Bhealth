@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../app/theme.dart';
 import '../../core/settings/settings_provider.dart';
@@ -23,6 +24,8 @@ class SettingsSheet extends ConsumerWidget {
     final notifier = ref.read(settingsProvider.notifier);
     final theme = Theme.of(context);
     final l10n = context.l10n;
+    // Resolved locale: the user's choice, or the device language by default.
+    final languageCode = Localizations.localeOf(context).languageCode;
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -37,18 +40,13 @@ class SettingsSheet extends ConsumerWidget {
             Text(l10n.languageLabel, style: theme.textTheme.titleMedium),
             const SizedBox(height: 4),
             _LanguageOption(
-              label: l10n.languageSystem,
-              selected: settings.locale == null,
-              onTap: () => notifier.setLocale(null),
-            ),
-            _LanguageOption(
               label: 'Español',
-              selected: settings.locale?.languageCode == 'es',
+              selected: languageCode == 'es',
               onTap: () => notifier.setLocale(const Locale('es')),
             ),
             _LanguageOption(
               label: 'English',
-              selected: settings.locale?.languageCode == 'en',
+              selected: languageCode == 'en',
               onTap: () => notifier.setLocale(const Locale('en')),
             ),
             const SizedBox(height: 16),
@@ -69,9 +67,45 @@ class SettingsSheet extends ConsumerWidget {
                 ],
               ],
             ),
+            const SizedBox(height: 16),
+            Text(l10n.legalLabel, style: theme.textTheme.titleMedium),
+            const SizedBox(height: 4),
+            _LegalLink(
+              label: l10n.privacyPolicy,
+              url: 'https://h-baby-web.vercel.app/#/privacidad',
+            ),
+            _LegalLink(
+              label: l10n.termsAndConditions,
+              url: 'https://h-baby-web.vercel.app/#/terminos',
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _LegalLink extends StatelessWidget {
+  final String label;
+  final String url;
+
+  const _LegalLink({required this.label, required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      dense: true,
+      title: Text(label, style: theme.textTheme.bodyMedium),
+      trailing: Icon(
+        Icons.open_in_new_rounded,
+        size: 18,
+        color: theme.colorScheme.primary,
+      ),
+      onTap: () =>
+          launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
     );
   }
 }

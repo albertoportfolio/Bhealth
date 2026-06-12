@@ -4,7 +4,7 @@ Guía para Claude Code al trabajar en este repositorio.
 
 ## Proyecto
 
-App Flutter ("Baby Tracker") para gestionar el crecimiento de un bebé: registros de sueño, tomas de leche/comida y medidas (peso). Todo se almacena **en local** en el móvil con SQLite (Drift). No hay backend ni red. La UI es **multi-idioma** (español e inglés) vía `gen-l10n`; el español es el idioma de respaldo.
+App Flutter ("Baby Tracker") para gestionar el crecimiento de un bebé: registros de sueño, tomas de leche/comida y medidas (peso). Todo se almacena **en local** en el móvil con SQLite (Drift). No hay backend ni red. La UI es **multi-idioma** (español e inglés) vía `gen-l10n`; el inglés es el idioma de respaldo cuando el idioma del dispositivo no está soportado.
 
 ## Comandos
 

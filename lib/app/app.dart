@@ -21,8 +21,8 @@ class BabyTrackerApp extends ConsumerWidget {
       // null = follow the device language.
       locale: settings.locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
-      // Spanish first so it stays the fallback for unsupported device locales.
-      supportedLocales: const [Locale('es'), Locale('en')],
+      // English first so it is the fallback for unsupported device locales.
+      supportedLocales: const [Locale('en'), Locale('es')],
       routerConfig: router,
     );
   }

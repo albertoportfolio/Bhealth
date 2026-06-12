@@ -57,9 +57,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get languageLabel => 'Idioma';
 
   @override
-  String get languageSystem => 'Idioma del dispositivo';
-
-  @override
   String get themeLabel => 'Color de la app';
 
   @override
@@ -73,6 +70,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get themeDark => 'Oscuro';
+
+  @override
+  String get legalLabel => 'Legal';
+
+  @override
+  String get privacyPolicy => 'Política de privacidad';
+
+  @override
+  String get termsAndConditions => 'Términos y condiciones';
 
   @override
   String get navHome => 'Inicio';

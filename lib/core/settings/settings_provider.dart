@@ -32,18 +32,19 @@ enum AppThemeTone {
 }
 
 class AppSettings {
-  /// `null` means "follow the device language".
+  /// `null` means "follow the device language" (default until the user
+  /// explicitly picks a language in settings).
   final Locale? locale;
   final AppThemeTone tone;
 
   const AppSettings({this.locale, this.tone = AppThemeTone.pink});
 
   AppSettings copyWith({
-    Locale? Function()? locale,
+    Locale? locale,
     AppThemeTone? tone,
   }) {
     return AppSettings(
-      locale: locale != null ? locale() : this.locale,
+      locale: locale ?? this.locale,
       tone: tone ?? this.tone,
     );
   }
@@ -65,14 +66,9 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     );
   }
 
-  /// Pass `null` to follow the device language.
-  Future<void> setLocale(Locale? locale) async {
-    state = state.copyWith(locale: () => locale);
-    if (locale == null) {
-      await _prefs.remove(_localeKey);
-    } else {
-      await _prefs.setString(_localeKey, locale.languageCode);
-    }
+  Future<void> setLocale(Locale locale) async {
+    state = state.copyWith(locale: locale);
+    await _prefs.setString(_localeKey, locale.languageCode);
   }
 
   Future<void> setTone(AppThemeTone tone) async {

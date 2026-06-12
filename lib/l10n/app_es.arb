@@ -17,12 +17,14 @@
 
   "settingsTitle": "Ajustes",
   "languageLabel": "Idioma",
-  "languageSystem": "Idioma del dispositivo",
   "themeLabel": "Color de la app",
   "themePink": "Rosa",
   "themeBlue": "Azul",
   "themeGreen": "Verde",
   "themeDark": "Oscuro",
+  "legalLabel": "Legal",
+  "privacyPolicy": "Política de privacidad",
+  "termsAndConditions": "Términos y condiciones",
 
   "navHome": "Inicio",
   "navFeedings": "Alimentación",

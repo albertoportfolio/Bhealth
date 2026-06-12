@@ -57,9 +57,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get languageLabel => 'Language';
 
   @override
-  String get languageSystem => 'Device language';
-
-  @override
   String get themeLabel => 'App color';
 
   @override
@@ -73,6 +70,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get themeDark => 'Dark';
+
+  @override
+  String get legalLabel => 'Legal';
+
+  @override
+  String get privacyPolicy => 'Privacy policy';
+
+  @override
+  String get termsAndConditions => 'Terms and conditions';
 
   @override
   String get navHome => 'Home';

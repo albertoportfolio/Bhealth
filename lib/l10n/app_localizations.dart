@@ -182,12 +182,6 @@ abstract class AppLocalizations {
   /// **'Language'**
   String get languageLabel;
 
-  /// No description provided for @languageSystem.
-  ///
-  /// In en, this message translates to:
-  /// **'Device language'**
-  String get languageSystem;
-
   /// No description provided for @themeLabel.
   ///
   /// In en, this message translates to:
@@ -217,6 +211,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dark'**
   String get themeDark;
+
+  /// No description provided for @legalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Legal'**
+  String get legalLabel;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @termsAndConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms and conditions'**
+  String get termsAndConditions;
 
   /// No description provided for @navHome.
   ///

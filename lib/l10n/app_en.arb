@@ -20,12 +20,14 @@
 
   "settingsTitle": "Settings",
   "languageLabel": "Language",
-  "languageSystem": "Device language",
   "themeLabel": "App color",
   "themePink": "Pink",
   "themeBlue": "Blue",
   "themeGreen": "Green",
   "themeDark": "Dark",
+  "legalLabel": "Legal",
+  "privacyPolicy": "Privacy policy",
+  "termsAndConditions": "Terms and conditions",
 
   "navHome": "Home",
   "navFeedings": "Feeding",
